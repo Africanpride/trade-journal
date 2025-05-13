@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Trade Journal</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: .5rem; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+  <h1>Trade Journal</h1>
+  <table id="trades">
+    <thead>
+      <tr>
+        <th>_id</th><th>Ticket</th><th>Type</th><th>Price</th><th>Stop Loss</th><th>Take Profit</th><th>Date</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    fetch("/trades")
+      .then(r=>r.json())
+      .then(trades=>{
+        const tbody = document.querySelector("#trades tbody");
+        trades.forEach(t=>{
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${t._id}</td>
+            <td>${t.ticket}</td>
+            <td>${t.type}</td>
+            <td>${t.price}</td>
+            <td>${t.sl}</td>
+            <td>${t.tp}</td>
+            <td>${new Date(t.time*1000).toLocaleString()}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(console.error);
+  </script>
+</body>
+</html>
