@@ -10,6 +10,7 @@ server.tar
 *.tar.lzma
 ./mongo-data/
 mongo-data
+node_modules_cache/
 *.pem
 *.key
 *.crt

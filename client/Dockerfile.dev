@@ -7,6 +7,13 @@ RUN npm install
 
 COPY . .
 
+# tell Next.js and the container what port to use
+ENV PORT=3000
+
+# expose that same port
 EXPOSE 3000
+
+# for debugging: print out the project root from inside the container
+RUN echo "Project root inside container is: $(pwd)"
 
 CMD ["npm", "run", "dev"]
