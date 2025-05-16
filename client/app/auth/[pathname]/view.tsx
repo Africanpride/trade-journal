@@ -19,14 +19,14 @@ export function AuthView({ pathname }: { pathname: string }) {
                     "text-muted-foreground text-xs"
                 )}
             >
-                Powered by{" "}
+                {/* Powered by{" "}
                 <Link
                     className="text-warning underline"
                     href="https://better-auth.com"
                     target="_blank"
                 >
-                    better-auth.
-                </Link>
+                    Logos-Rhema Foundation &trade;
+                </Link> */}
             </p>
         </main>
     )
